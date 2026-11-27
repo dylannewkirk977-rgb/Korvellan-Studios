@@ -2,7 +2,7 @@
 # Model names and endpoints live here (not in code) so they can move between GPUs.
 
 # Folders. Relative paths are relative to this folder.
-# Never point these at the F: drive.
+# Never point these at the D: or F: drives.
 input_dir: input          # downloaded / source videos
 output_dir: output        # transcripts, picks, rendered clips
 

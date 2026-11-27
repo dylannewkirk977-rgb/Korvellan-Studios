@@ -7,14 +7,14 @@
 | CPU | Ryzen 9 7950X3D (16 cores / 32 threads) | Video encoding, general compute |
 | RAM | 64 GB DDR5 | |
 | GPU 1 | RTX 5070, 12 GB (CUDA) | Image/video generation, speech-to-text, text-to-speech |
-| GPU 2 | Radeon AI PRO R9700, 32 GB | Large language models (**not installed yet**) |
+| GPU 2 | Radeon AI PRO R9700, 32 GB | Large language models (installed 2026-11-26; Ollama sees it via ROCm) |
 | C: | NVMe, ~1.5 TB free | OS, tools, active projects |
-| D: | NVMe, ~0.9 TB free | Model weights |
-| F: | HDD pool, ~7.4 TB free | **Off limits: tools never write here** |
+| C: (models) | Ollama models in the default location (`%USERPROFILE%\.ollama\models`) | Model weights |
+| D:, F: | Other drives | **Off limits: tools never read or write here** |
 
 **Why split the GPUs this way:** language models need a lot of memory, and the R9700's 32 GB fits much bigger models. Image, video, and audio tools are mostly built for NVIDIA, so they go on the 5070. Each card does its own job without competing for memory.
 
-**Until the R9700 is installed**, everything runs on the 5070 with smaller models.
+**Motherboard:** ASUS ProArt X870E-CREATOR WIFI (installed 2026-11-26, with a Windows reinstall).
 
 ## Software
 

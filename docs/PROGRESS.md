@@ -1,9 +1,12 @@
 # Progress
 
 ## Current focus
-Video pipeline: the **Clipper** (long video → captioned vertical clips) works end-to-end. Next: test on better source material, then polish.
+Rebuilding after the 2026-11-26 Windows reinstall (new motherboard + R9700). Then: run the 30B model on the R9700 and build the agent console.
 
 ## Done
+- **2026-11-26**: New motherboard (ASUS ProArt X870E-CREATOR WIFI) and **Radeon AI PRO R9700 installed**. Windows reinstalled, so all tools and chat history on C: were lost.
+- **2026-11-26**: **Moved the project off D: to `C:\Users\dylan\Downloads\Korvellan-Studios`** (the working copy; `C:\Korvellan-Studios` was a temporary copy and its edits were merged here). New rule: never use D: or F: (see CLAUDE.md).
+- **2026-11-26**: Reinstalled uv, ffmpeg, Git, Node LTS, deno, Ollama 0.40.18 (winget) and yt-dlp (`uv tool`). Rebuilt both Python environments. Ollama sees the R9700 via ROCm (31.9 GB) and the 5070. Models are in the default C: location.
 - **2026-11-20**: Assessed the dev environment (see [ARCHITECTURE.md](ARCHITECTURE.md)).
 - **2026-11-20**: Rebranded the repo from Answer North to Korvellan Studios; added project docs.
 - **2026-11-20**: Renamed the local folder to `Korvellan-Studios` and the GitHub repo to `Korvellan-Studios`.
@@ -34,16 +37,16 @@ Video pipeline: the **Clipper** (long video → captioned vertical clips) works 
 
 ## Next
 1. Test on a livelier Creative Commons podcast/interview.
-2. Consider installing deno: yt-dlp warns that YouTube extraction without a JavaScript runtime is deprecated.
+2. ~~Install deno~~ (installed 2026-11-26); confirm yt-dlp no longer warns about a missing JavaScript runtime.
 3. Later: speaker-following crop for group shows (crop onto whoever is talking).
 4. Later: loudness detection to catch non-verbal moments (screams, big plays) in gaming content.
 5. Later: optional caption censoring.
 
 ## Waiting on
-- **Radeon AI PRO R9700**: needs an 8-pin adapter for clearance before install. After install:
-  1. AMD driver, verify detection.
+- **Radeon AI PRO R9700**: installed 2026-11-26. Remaining:
+  1. ~~AMD driver, verify detection~~ (done: Ollama sees it via ROCm).
   2. Ollama on the R9700 only (hide the NVIDIA card from it); pull a ~30B model; switch `llm.model` in `video-pipeline/config.yaml`; compare picks against the 9B model.
-  3. **Build the agent console** (`console/`, approved for after the install): chat in plain English, local LLM calls the existing tools (creators, search, download, clipper, open folder, outreach drafts). Include **lead tools**: query `local_prospects.csv` / `creator_prospects.csv` ("salons in Edina with a phone"), draft pitches, and track outreach (contacted / replied / follow-up dates) in a small local database (not the CSV, since Excel locks open files), with export to Excel and a one-time import of any notes the user added in Excel. Phases: terminal chat → background jobs + progress → local web UI with clip previews. Tools allowlisted, no deletes, F: blocked in code, confirm before long jobs.
+  3. **Build the agent console** (`console/`, approved for after the install): chat in plain English, local LLM calls the existing tools (creators, search, download, clipper, open folder, outreach drafts). Include **lead tools**: query `local_prospects.csv` / `creator_prospects.csv` ("salons in Edina with a phone"), draft pitches, and track outreach (contacted / replied / follow-up dates) in a small local database (not the CSV, since Excel locks open files), with export to Excel and a one-time import of any notes the user added in Excel. Phases: terminal chat → background jobs + progress → local web UI with clip previews. Tools allowlisted, no deletes, D: and F: blocked in code, confirm before long jobs.
 
 ## Known issues
 - **prospect-finder `search`**: OpenStreetMap is incomplete for trades (e.g. only 29 plumbers in the metro) and "no website" often means "not listed". If trade leads matter, consider Google Places API (paid). The `twin-cities` region is a rectangle, so it includes a few towns just outside the 7 counties (e.g. Big Lake, Buffalo, Monticello).
